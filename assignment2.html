@@ -38,15 +38,15 @@
 
                 <section data-state="alert" data-transition="zoom">
                     <h1 class="shadowfont white">Assignment 2</h1>
-                    <h3>Critique of visualizations</h3>
+                    <h3>Crime bar chart</h3>
                 </section>
 
                 <section>
                     <h3>Setup</h3>
-                    <p>To be completed by <b>28-3-2021</b>(Mon) 1200hrs</p>
+                    <p>To be completed by <b>16-6-2022</b>(Thurs) 2359hrs</p>
                     <ul>
-                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment2</li>
-                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/CSC3007-assignment1</li>
+                    <li>In the repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
                     <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
                     </ul>
                 </section>
@@ -54,41 +54,49 @@
                 <section>
                     <h3>Background</h3>
                     <ul>
-                    <li>We have spent some time discussing the visualization model. What (data) - why (task) - how (idiom)</li>
-                    <li>We have also looked at viz validation from a 4-step framework. The right domain - data - idiom - tech.</li>
-                    <li>It is time to take some time to think about the heart of these issues a little more deeply.</li>
+                    <li>We have gone through a basic lab in D3 and it is time to put it together in a simple assignment.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Critique: Data and Idioms</h3>
+                    <h3>The Problem</h3>
                     <ul>
-                    <li>It is harder to critique domain issues unless you've worked on the visualization.</li>
-                    <li>Similarly, it is harder to critique tech issues unless you've worked on it.</li>
-                    <li>However, when it comes to the idiom and to an extent data, it is far easier for us to critique choices.</li>
-                    <li>You can find visualization examples on the Data Is Beautiful reddit or any number of <a href="week1b.html#/22" target="_blank">blogs</a>.</li>
+                    <li>Let's say you are interested in this question: What type of serious crime was the most common in SG in 2020? </li>
+                    <li>Details can be found in this dataset <a href="https://data.gov.sg/dataset/cases-recorded-for-selected-major-offences">here</a>.</li>
+                    <li>You can either pull from the API or read off the CSV file / create your own JSON as the dataset is pretty small.</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>The Problem 2</h3>
+                    <ul>
+                    <li>How would you present the problem hypothesis in a simple chart?</li>
+                    <li>You are allowed to add interaction or annotation in any way to help present your story.</li>
+                    <li>The lecture on marks, channels and applied perception can be useful when we discuss salience (next week).</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Assignment</h3>
+                    <h3>Requirements</h3>
                     <ul>
-                    <li>Bad visualizations can arise from data issues - badly chosen data scale, missing / inaccurate data, etc.</li>
-                    <li>Another pitfall is choosing the wrong idiom / putting it together badly - too many color channels, chartjunk, etc.</li>
-                    <li>Find 2 <b>visualization examples</b>, and dissect it critically on what you feel is wrong.</li>
-                    <li>Comment on the <b>data</b> and <b>idiom</b> issues. Can be for both visualizations or one each.</li>
-                    <li>Also comment on how the visualizations can be improved.</li>
+                    <li>This visualization cannot be a static png / jpg image.</li>
+                    <li>It must be a <b>generated chart from some code</b> (D3 or otherwise) and then published from a web repository.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>More details</h3>
+                    <h3>Extra challenge</h3>
                     <ul>
-                    <li>This assignment is to get you to think about all the theory that we've learnt so far in this course.</li>
-                    <li>Beyond the tech execution, we also arm ourselves with tools to think critically about visualizations. This exercise will help you think and frame your project.</li>
-                    <li>Not a writing essay assignment, so short paragraphs or bullet points are fine.</li>
-                    <li>For this module, I will likely ask you to present your critiques to the class after submissions are in.</li>
+                    <li>Add some simple interactivity like mouseover tooltips.</li>
+                    <li>Make sure the chart is responsive to viewport.</li>
+                    <li>A CSS framework might make your life easier to layout stuff.</li>
                     </ul>
+                </section>
+
+                <section>
+                    <h3>Extra challenge 2</h3>
+                    <p>Let's broaden the problem hypothesis - what if you were looking at crime trends over the years?</p>
+                    <p>Create either a more complicated interactive version of the same chart, or a different one that suits this better. Will discuss in class.</p>
                 </section>
 
                 <section>
