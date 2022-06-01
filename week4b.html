@@ -53,8 +53,8 @@
                     <h3>Why <a href="https://d3js.org/" target="_blank">D3</a>?</h3>
                     <h4>(Data Driven Documents)</h4>
                     <p>It is a comprehensive framework for building any sort (almost literally) of interactive visualizations for the web.</p>
-                    <p>It is however, not a simple high-level graphing template library.</p>
-                    <p>One of the main design patterns in this library is <b>binding</b> the data to DOM elements.</p>
+                    <p>It is however, not just a simple high-level graphing library.</p>
+                    <p>It has reactive design patterns like <b>binding</b> the data to DOM elements. Very similar to how a modern JS framework (Angular, React, Vue) approaches data binding!</p>
                     <hr/>
                     <p class="smallfont">Reading: <a href="https://medium.com/@Elijah_Meeks/d3-is-not-a-data-visualization-library-67ba549e8520" target="_blank">D3 is not a Data Visualization Library</a>, Elijah Meeks</p>
                 </section>
@@ -73,7 +73,7 @@
                     <li><a href="https://vega.github.io/vega-lite/" target="_blank">Vega 5.2</a></li>
                     <li><a href="https://nvd3.org/" target="_blank">NVD3</a></li>
                     <li><a href="https://c3js.org/" target="_blank">C3</a></li>
-                    <li><a href="https://observablehq.com/@observablehq/plot" target="_blank">Observable Plot</a> (<a href="https://github.com/observablehq/plot/blob/main/CHANGELOG.md" target="_blank">v0.4.1</a>)</li>
+                    <li><a href="https://observablehq.com/@observablehq/plot" target="_blank">Observable Plot</a> (<a href="https://github.com/observablehq/plot/blob/main/CHANGELOG.md" target="_blank">v0.5</a>)</li>
                     </ul>
                 </section>
 
@@ -131,7 +131,7 @@
   &lt;meta charset="UTF-8">
 &lt;/head>
 &lt;body>
-&lt;script src="https://d3js.org/d3.v6.min.js">&lt;/script>
+&lt;script src="https://d3js.org/d3.v7.min.js">&lt;/script>
 &lt;script>
   d3.select("body").append("p").text("Hello World!");
 &lt;/script>
@@ -153,11 +153,12 @@
 
 &lt;script>
     d3.select("#hellos p").style("color", "green");
-    d3.selectAll("#hellos p").style("color", "green");
+    d3.selectAll("#hellos p").style("color", "blue");
 &lt;/script>
                     </code></pre>
                     <hr/>
                     <p class="smallfont">Notice the difference between the select and selectAll statements.</p>
+                    <p class="smallfont">It's similar to JQuery (or other modern frameworks) in that you can manipulate any DOM element. Try d3.select("body").style("background-color", "red")</p>
                 </section>
                 
                 <section>
@@ -165,25 +166,49 @@
                     <pre><code>
 let data = [10, 20, 30];
 let hellos = d3.select("#hellos");
+
 hellos.selectAll("p")
 .data(data)
 .enter()
 .append("p")
-.text("Hello World");
+.style("font-size", function(d) { return d + "px" })
+.text("Hello World")
                     </code></pre>
                     <hr/>
                     <p class="smallfont">Notice the design pattern: Select a bunch of elements (that don't exist), bind that to the data, and then append said elements.</p>
                     <p class="smallfont">One style to write javascript is to use <a href="https://medium.com/backticks-tildes/understanding-method-chaining-in-javascript-647a9004bd4f" target="_blank">method chaining</a>, which is a design pattern you will see in many javascript libraries, like JQuery or Lodash. D3 also follows this style, and it makes your code more readable.</p>
+                    <p class="smallfont">Notice the use of anonymous functions to manipulate the data.</p>
+                </section>
+
+                <section>
+                    <h3>Slightly more complex example</h3>
+                    <pre><code>
+let data = [
+    {text: "Hello World 1", size: 10},
+    {text: "Hello World 2", size: 20}
+]
+
+let hellos = d3.select("#hellos");
+
+hellos.selectAll("p")
+.data(data)
+.enter()
+.append("p")
+.style("font-size", d => d.size + "px")
+.text(d => d.text)
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Notice the use of arrow notation (ES6) to write anonymous functions.</p>
                 </section>
 
                 <section>
                     <h3>Exercise 1</h3>
                     <pre><code>
 let data = [
-    {text: "Hello World 1", size: 10, color: "green"},
-    {text: "Hello World 2", size: 20, color: "blue"},
-    {text: "Hello World 3", size: 30, color: "red"},
-];                  
+    {text: "Hello World 1", size: 10, color: "green", font: "Courier New"},
+    {text: "Hello World 2", size: 20, color: "blue", font: "Arial"},
+    {text: "Hello World 3", size: 30, color: "red", font: "Times New Roman"}
+];
                     </code></pre>
                     <p class="smallfont">Given this dataset, can you print out each individual text, and style the elements?</p>
                 </section>
@@ -196,8 +221,10 @@ hellos.selectAll("p")
 .enter()
 .append("p")
 .text(d => d.text)
+
 .transition()
 .duration((d,i) => i * 1000)
+
 .style("font-size", d => d.size + "px")
 .style("color", d => d.color);
                     </code></pre>
@@ -205,45 +232,71 @@ hellos.selectAll("p")
 
 
                 <section>
+                    <section>
                     <h3>Recap: SVG</h3>
                     <h4>Exercise 1b</h4>
                     <p class="smallfont">Remember how to draw shapes using SVGs?</p>
                     <pre><code>
-&lt;svg width="800" height="800">&lt;/svg>
+&lt;svg width="1000" height="1000">&lt;/svg>
 let data = [
-    {x: 400, y: 700, r:150, color: "green"},
-    {x: 100, y: 300, r:50, color: "blue"},
-    {x: 850, y: 400, r:100, color: "red"}
+    {cx: 400, cy: 600, r:150, fill: "green", stroke: "black"},
+    {cx: 100, cy: 200, r:50, fill: "blue", stroke: "purple"},
+    {cx: 650, cy: 100, r:100, fill: "red", stroke: "orange"}
 ]
                     </code></pre>
-                    <p class="smallfont">Given this dataset, can you add these as circles, with the appropriate theming?</p>
+                    <p class="smallfont">Given this dataset, can you add these as circles to the svg, with the appropriate theming?</p>
+                    </section>
+                    
+                    <section>
+                        <h4>Exercise 1b hints</h4>
+                        
+                    <pre><code>
+                    d3.select("svg").selectAll("circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", d => d.cx)
+                    
+                    ...
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Fill in the rest.</p>
+                    <p class="smallfont">Set stroke-width to be 5 so the stroke is clearer.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Coordinate systems: Chart to SVG</h3>
+                    <img src="img/chart_to_svg.jpg">
                 </section>
 
                 <section>
                     <h3>Domains and ranges</h3>
-                    <p>How do we map our quantitative data scale to the SVG drawing scale? Use <b>domain / range</b>.</p>
+                    <p class="smallfont">Let's say we want to draw our 1000 x 1000 chart data size onto an SVG that is 600 x 600</p>
+                    <p class="smallfont">How do we map our quantitative data scale to the SVG drawing scale? Use <b>domain / range</b> to automatically calculate the mapping.</p>
                     <pre><code>
 let xScale = d3.scaleLinear()
     .domain([0,1000])
-    .range([0,800]);
+    .range([0,600]);
 
 let yScale = d3.scaleLinear()
     .domain([0,1000])
-    .range([800,0]);
+    .range([600,0]);
                     </code></pre>
                     <hr/>
-                    <p class="smallfont">Note that the y-axis (the range) is typically inverted.</p>
+                    <p class="smallfont">More on scales and domain/range <a href="https://medium.com/@sahilaug/line-graphs-using-d3-drawing-the-axes-8ffc0076a8be" target="_blank">here</a>.</p>
+                    <p class="smallfont">Note that the my yScale is inverted here. Because for standard charts, we draw from the bottom-left up rather than top-left down.</p>
                 </section>
 
                 <section>
                     <h3>Setup Dimensions / Margins</h3>
                     <pre><code>
-let margin = {top: 20, right: 20, bottom: 60, left: 60},
-    width = 800 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+let margin = {top: 20, right: 20, bottom: 40, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 let chart = d3.select("svg")
-    .attr("width", 800)
-    .attr("height", 800)
+    .attr("width", 600)
+    .attr("height", 600)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 let xScale = d3.scaleLinear()
@@ -257,10 +310,10 @@ chart.selectAll("circle")
     .data(data)
     .enter()
     .append("circle")
-    .attr("cx", d => xScale(d.x))
-    .attr("cy", d => yScale(d.y))
+    .attr("cx", d => xScale(d.cx))
+    .attr("cy", d => yScale(d.cy))
     .attr("r", d => d.r)
-    .attr("fill", d => d.color);
+    .attr("fill", d => d.fill);
                     </code></pre>
                 </section>
 
@@ -332,7 +385,7 @@ let colorScale = d3.scaleLinear()
     })
                     </code></pre>
                     <hr/>
-                    <p class="smallfont">Do note that this event firing is syntax for the latest D3 v6. <a href="https://observablehq.com/@d3/d3v6-migration-guide" target="_blank">Migration docs here</a>. Syntax for event firing is different for previous versions.</p>
+                    <p class="smallfont">Do note that this event firing is syntax for the latest D3 v7. <a href="https://observablehq.com/@d3/d3v6-migration-guide" target="_blank">Migration docs here</a>. Syntax for event firing is different for previous versions.</p>
                 </section>
 
                 <section>
@@ -361,6 +414,12 @@ let colorScale = d3.scaleLinear()
                     <a href="https://bl.ocks.org/Chi-Loong/e3389dfb6873c85caf445f0faba52ec4" target="_blank"><img width="600" src="img/preview2.png"/></a>
                     <p><a href="https://bl.ocks.org/Chi-Loong/e3389dfb6873c85caf445f0faba52ec4" target="_blank">Bl.ocks.org: D3 bar chart part 2</a></p>
                     <p class="small">https://bl.ocks.org/Chi-Loong/e3389dfb6873c85caf445f0faba52ec4</p>
+                </section>
+                
+                <section>
+                    <h2>Final thoughts</h2>
+                    <p>D3 is not just for standard charts. There are tons of libraries out there that are probably easier to use to create standard charts.</p>
+                    <p>But if you want to write your own interaction, animations, or code art with D3, you can. Here's a <a href="https://showcase.vslashr.com/moire/" target="_blank">code art piece/a>.</p>
                 </section>
 
                 <section>
