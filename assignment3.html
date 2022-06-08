@@ -38,15 +38,15 @@
 
                 <section data-state="alert" data-transition="zoom">
                     <h1 class="shadowfont white">Assignment 3</h1>
-                    <h3>Tabular data viz</h3>
+                    <h3>Singapore population choropleth</h3>
                 </section>
-				
+                
                 <section>
                     <h3>Setup</h3>
-                    <p>To be completed before <b>31-3-2021</b>(Thurs) 1200hrs</p>
+                    <p>To be completed before <b>30-6-2022</b>(Thurs) 2359hrs</p>
                     <ul>
-                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment3</li>
-                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/CSC3007-assignment3</li>
+                    <li>In the repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
                     <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
                     </ul>
                 </section>
@@ -54,50 +54,40 @@
                 <section>
                     <h3>What: Dataset</h3>
                     <ul>
-                    <li>We'll be looking at HDB's <a href="https://data.gov.sg/dataset/resale-flat-prices" target="_blank">Resale flat prices</a>.</li>
-                    <li>Connect to the dataset &mdash; via API, or download the CSV &mdash; up to you.</li>
-                    <li>You probably have to do some data manipulation. Whether it is in the CSV or via code or via API query, it's up to you.</li>
+                    <li>We'll be looking at the Singstat <a href="https://www.singstat.gov.sg/publications/population/population-trends" target="_blank">Population Geospatial Timeseries</a>.</li>
+                    <li>We'll also be looking at the Data.gov <a href="https://data.gov.sg/dataset/master-plan-2019-subzone-boundary-no-sea" target="_blank">Master Plan 2019 Subzone Boundary</a>.</li>
+                    <li>There is going to be some data manipulation and preperation. I'll walk through this in class.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h4>Why: Framing is up to you</h4>
-                    <ul>
-                    <li>The dataset is huge, so frame <b>one</b> <i>simple</i> hypothesis that you are interested in.</li>
-                    <li>E.g. What are transactions in only Ang Mo Kio like in the last 6 months?</li>
-                    <li>E.g. I want to sell my flat. Pick that block and maybe a few other blocks to analyze.</li>
-                    </ul>
+                    <h3>Why: Task</h3>
+                    <p class="smallfont">A choropleth visualization shows off which subsdistricts have the most population in SG.</p>
+                    <img src="img/SGassignment4.jpg"/>
                 </section>
 
                 <section>
                     <h3>How: Encoding</h3>
-                    <ul>
-                    <li>Up to you. Do you want to put everything into one scatterplot chart? Do a simple boxplot?</li>
-                    <li>Feel free to come up with derived columns, and/or filter away data that is not relevant to your hypothesis.</li>
-                    <li>If you are doing summary statistics, D3 has functions like D3.group to make your life easier. Or use an external library like tidyr.</li>
-                    <li>Have a very, very simple writeup (a few lines) to explain your hypothesis and choice.</li>
-                    </ul>
+                    <p>The main visualization encoding has been chosen - a choropleth map.</p>
+                    <p>However, feel free to add in a legend, a title and any interaction tooltips as you prefer.</p>
+                    <p class="smallfont">I have gone through in class building a choropleth in D3, but you can build this in whatever platform you choose as long as the result is visible in your assignment repository.</p>
+                    <p class="smallfont">For example, purely in Leaflet, ArcGIS, Mapbox, etc.</p>
                 </section>
 
                 <section>
-                    <h3>How: Execution / Expectations</h3>
-                    <ul>
-                    <li>I'm expecting one chart (if D3), but you are free to do more than one (esp. if not using D3).</li>
-                    <li>You may prefer not to use D3 and that is fine. However, please don't just use Excel and then screenshot an image.</li>
-                    <li>Up to you how much interactivity you want to put into the piece (if D3). Good interactivity takes a ton of work.</li>
-                    <li>We'll be doing small code assignments for this course, so I'm not expecting anything complicated. Save it for the project.</li>
-                    </ul>
+                    <h3>Template starter</h3>
+                    <p>I've given links to both the datasets used so you can feel free to take the data from there.</p>
+                    <p>However, I've also cleaned the dataset on both the <a href="assignments/sgmap.json" target="_blank">GeoJSON data</a> and also the <a href="assignments/population2021.csv" target="_blank">2021 population data</a>.</p>
+                    <p>I've also included a simple <a href="assignments/assignment4-starter.html" target="_blank">template D3 starter</a>.</p>
                 </section>
 
                 <section>
-                    <h3>Tips</h3>
-                    <ul>
-                    <li>Frame your hypothesis carefully so that you don't have to kill yourself doing this assignment.</li>
-					<li>With higher order libraries like Vega-lite (or Plots) you can churn out exploratory charts a lot faster.</li>
-					<li>The point of this assignment is to think about how to approach a bigger dataset (data), frame your hypothesis (task abstraction), then execute it (idiom).</li>
-                    </ul>
-                </section>				
-				
+                    <h3>Requirements / Extra challenges</h3>
+                    <p>A legend for the choropleth map is <b>required</b>.</p>
+                    <p>Interactivity for tooltips when hovering over the subdistricts - print out the population data.</p>
+                    <p>Theme the map to look decent / nice.</p>
+                </section>
+
                 <section>
                     <h2>Questions?</h2>
                     <div class="plain">
