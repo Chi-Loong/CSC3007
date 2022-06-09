@@ -49,6 +49,8 @@ Papa.parse("data/csc3007.csv", {
     
         var data = results.data.map(function(d) {return [d.fullname, d.github]});
         
+        console.log(data);
+        
         $("#csc3007").DataTable({
             data: data,
             responsive: true,
@@ -68,35 +70,35 @@ Papa.parse("data/csc3007.csv", {
                 targets: 2,
                 data: "Assignment1",
                 render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[2] + '.github.io/CSC3007-assignment1/">Assignment 1</a>';
+                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment1/">Assignment 1</a>';
                 }
             },
             {
                 targets: 3,
                 data: "Assignment2",
                 render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[2] + '.github.io/CSC3007-assignment2/">Assignment 2</a>';
+                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment2/">Assignment 2</a>';
                 }
             },
             {
                 targets: 4,
                 data: "Assignment3",
                 render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[2] + '.github.io/CSC3007-assignment3/">Assignment 3</a>';
+                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment3/">Assignment 3</a>';
                 }
             },
             {
                 targets: 5,
                 data: "Assignment4",
                 render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[2] + '.github.io/CSC3007-assignment4/">Assignment 4</a>';
+                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment4/">Assignment 4</a>';
                 }
             },
             {
                 targets: 6,
                 data: "Assignment5",
                 render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[2] + '.github.io/CSC3007-assignment5/">Assignment 5</a>';
+                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment5/">Assignment 5</a>';
                 }
             }
             ]
