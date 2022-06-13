@@ -47,7 +47,7 @@ Papa.parse("data/csc3007.csv", {
     download:true,
     complete: function(results) {
     
-        var data = results.data.map(function(d) {return [d.fullname, d.github]});
+        var data = results.data.map(function(d) {return [d.group, d.id, d.fullname, d.github, d.leader]});
         
         console.log(data);
         
@@ -55,50 +55,64 @@ Papa.parse("data/csc3007.csv", {
             data: data,
             responsive: true,
             columns: [
+                { title: "Group" },
+                { title: "Student ID" },
                 { title: "Full Name" },
                 { title: "Github Username" },
+                { title: "Project", orderable: false  },
                 { title: "Assignment1", orderable: false },
                 { title: "Assignment2", orderable: false },
                 { title: "Assignment3", orderable: false },
                 { title: "Assignment4", orderable: false },
                 { title: "Assignment5", orderable: false }
             ],
-            pageLength: 20,
+            pageLength: 30,
             order: [[0, "asc"]],
             columnDefs: [
             {
-                targets: 2,
-                data: "Assignment1",
-                render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment1/">Assignment 1</a>';
-                }
-            },
-            {
-                targets: 3,
-                data: "Assignment2",
-                render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment2/">Assignment 2</a>';
-                }
-            },
-            {
                 targets: 4,
-                data: "Assignment3",
+                data: "Project",
                 render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment3/">Assignment 3</a>';
+                  if (row[4] != "") {
+                    return '<a href="https://' + row[4] + '.github.io/CSC3007-project/">Project</a>';
+                  } else {
+                    return "";
+                  }
                 }
             },
             {
                 targets: 5,
-                data: "Assignment4",
+                data: "Assignment1",
                 render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment4/">Assignment 4</a>';
+                  return '<a href="https://' + row[3] + '.github.io/CSC3007-assignment1/">Assignment 1</a>';
                 }
             },
             {
                 targets: 6,
+                data: "Assignment2",
+                render: function ( data, type, row, meta ) {
+                  return '<a href="https://' + row[3] + '.github.io/CSC3007-assignment2/">Assignment 2</a>';
+                }
+            },
+            {
+                targets: 7,
+                data: "Assignment3",
+                render: function ( data, type, row, meta ) {
+                  return '<a href="https://' + row[3] + '.github.io/CSC3007-assignment3/">Assignment 3</a>';
+                }
+            },
+            {
+                targets: 8,
+                data: "Assignment4",
+                render: function ( data, type, row, meta ) {
+                  return '<a href="https://' + row[3] + '.github.io/CSC3007-assignment4/">Assignment 4</a>';
+                }
+            },
+            {
+                targets: 9,
                 data: "Assignment5",
                 render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[1] + '.github.io/CSC3007-assignment5/">Assignment 5</a>';
+                  return '<a href="https://' + row[3] + '.github.io/CSC3007-assignment5/">Assignment 5</a>';
                 }
             }
             ]
