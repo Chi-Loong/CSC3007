@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Assignment 3</title>
+        <title>Assignment 4</title>
 
-        <meta name="description" content="Assignment 3">
+        <meta name="description" content="Assignment 4">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -37,67 +37,78 @@
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Assignment 3</h1>
-                    <h3>Tabular data viz</h3>
+                    <h1 class="shadowfont white">Assignment 4</h1>
+                    <h3>Force network diagram</h3>
                 </section>
-				
+                
                 <section>
                     <h3>Setup</h3>
-                    <p>To be completed before <b>31-3-2021</b>(Thurs) 1200hrs</p>
+                    <p>To be completed before <b>7-7-2022</b>(Thurs) 2359hrs</p>
                     <ul>
-                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment3</li>
-                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/CSC3007-assignment4</li>
+                    <li>In the repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
                     <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>What: Dataset</h3>
-                    <ul>
-                    <li>We'll be looking at HDB's <a href="https://data.gov.sg/dataset/resale-flat-prices" target="_blank">Resale flat prices</a>.</li>
-                    <li>Connect to the dataset &mdash; via API, or download the CSV &mdash; up to you.</li>
-                    <li>You probably have to do some data manipulation. Whether it is in the CSV or via code or via API query, it's up to you.</li>
-                    </ul>
+                    <h3>Why: Task</h3>
+                    <p>A force network diagram is a very good way of showing relationships between cases.</p>
+                    <p>In this case, we're visualizing just a small cluster of cases (20 cases) during the Covid situation last year.</p>
+                    <img src="assignments/assignment4.jpg"/>
+                    <p class="smallfont">Sample screenshot of cases in sample data</p>
                 </section>
 
                 <section>
-                    <h4>Why: Framing is up to you</h4>
+                    <h3>What: Dataset</h3>
                     <ul>
-                    <li>The dataset is huge, so frame <b>one</b> <i>simple</i> hypothesis that you are interested in.</li>
-                    <li>E.g. What are transactions in only Ang Mo Kio like in the last 6 months?</li>
-                    <li>E.g. I want to sell my flat. Pick that block and maybe a few other blocks to analyze.</li>
+                    <li>A very small slice of the dataset for this <a href="https://covid.viz.sg/" target="_blank">Covid tracing visualization</a>.</li>
+                    <li>You can find the assignment dataset for the cases <a href="assignments/cases-sample.json">here</a>.</li>
+                    <li>Similarly, you can find the assignment dataset for the links <a href="assignments/links-sample.json">here</a>.</li>
+                    </ul>
+                    <ul>
+                    
                     </ul>
                 </section>
 
                 <section>
                     <h3>How: Encoding</h3>
+                    <p>The main visualization encoding has been chosen - force network diagram.</p>
+                    <p>You are required to show which cases are <b>male</b>, and which are <b>female</b>.</p>
+                    <p>Beyond that you may theme the cases and links however way you choose.</p>
+                </section>
+
+                <section>
+                    <h3>Template starter</h3>
+                    <p>I've included a simple <a href="assignments/assignment4-starter.html" target="_blank">template D3 starter</a>.</p>
+                    <p>A lot more basic than the previous ones, except that I've formatted the links JSON into the format the D3 requires for the force network diagram.</p>
+                </section>
+
+                <section>
+                    <h3>Extra challenge</h3>
+                    <p>Interactivity: tooltips to print out the information in the nodes.</p>
+                    <p>Interactivity: mouse hover to show selection of nodes.</p>
+                </section>
+
+                <section>
+                    <h3>Extra, extra challenge</h3>
+                    <p>Add in at least one more category (use a button toggle) to visualize beyond gender, e.g. age, vaccination status, etc.</p>
+                    <p>Either (and/or):</p>
                     <ul>
-                    <li>Up to you. Do you want to put everything into one scatterplot chart? Do a simple boxplot?</li>
-                    <li>Feel free to come up with derived columns, and/or filter away data that is not relevant to your hypothesis.</li>
-                    <li>If you are doing summary statistics, D3 has functions like D3.group to make your life easier. Or use an external library like tidyr.</li>
-                    <li>Have a very, very simple writeup (a few lines) to explain your hypothesis and choice.</li>
+                    <li>Draw arrows on links to show chain of infection.</li>
+                    <li>Experiment with nicer links that are not just straight paths.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>How: Execution / Expectations</h3>
+                    <h3>Grading key</h3>
                     <ul>
-                    <li>I'm expecting one chart (if D3), but you are free to do more than one (esp. if not using D3).</li>
-                    <li>You may prefer not to use D3 and that is fine. However, please don't just use Excel and then screenshot an image.</li>
-                    <li>Up to you how much interactivity you want to put into the piece (if D3). Good interactivity takes a ton of work.</li>
-                    <li>We'll be doing small code assignments for this course, so I'm not expecting anything complicated. Save it for the project.</li>
+                    <li>Some submission - basic force network diagram: 2 marks</li>
+                    <li>Interactivity / tooltips: 3 marks</li>
+                    <li>Additional category / links challenge: 4 marks</li>
                     </ul>
                 </section>
 
-                <section>
-                    <h3>Tips</h3>
-                    <ul>
-                    <li>Frame your hypothesis carefully so that you don't have to kill yourself doing this assignment.</li>
-					<li>With higher order libraries like Vega-lite (or Plots) you can churn out exploratory charts a lot faster.</li>
-					<li>The point of this assignment is to think about how to approach a bigger dataset (data), frame your hypothesis (task abstraction), then execute it (idiom).</li>
-                    </ul>
-                </section>				
-				
                 <section>
                     <h2>Questions?</h2>
                     <div class="plain">
