@@ -50,22 +50,20 @@
 
                 <section>
                     <h2>What is Leaflet?</h2>
-                    <p><a href="https://leafletjs.com/" target="_blank">Leaflet</a> is the leading open-source JavaScript library for mobile-friendly interactive maps. Weighing just about 39 KB of JS, it has all the mapping features most developers ever need.</p>
+                    <p><a href="https://leafletjs.com/" target="_blank">Leaflet</a> is the leading open-source JavaScript library for mobile-friendly interactive maps.</p>
                 </section>
 
                 <section>
                     <h3>Installing Leaflet</h3>
-                    <p>Let's use the <a href="assignments/assignment4-starter.html" target="_blank">assignment 4 starter</a> as a base template.</p>
-                    <p>We'll also need the SG <a href="assignments/sgmap.json" target="_blank">GeoJSON dataset</a>.</p>
-                    <p>We're going to add <a href="https://leafletjs.com/" target="_blank">Leaflet</a> CSS and JS via a <a href="https://cdnjs.com/libraries/leaflet/1.7.1" target="_blank">CDN</a>.</p>
+                    <p>We're going to add <a href="https://leafletjs.com/" target="_blank">Leaflet</a> CSS and JS via a <a href="https://cdnjs.com/libraries/leaflet/1.8" target="_blank">CDN</a>.</p>
                     <pre><code>
-&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js">&lt;/script>
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.css" />
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js">&lt;/script>
                     </code></pre>
                 </section>
 
                 <section>
-                    <h3>Installing open street map tiles`</h3>
+                    <h3>Installing open street map tiles</h3>
                     <p>For many base maps (especially those by OSM) you need to include this script.</p>
                     <p><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet providers</a> Git Repo</p>
                     <pre><code>
@@ -180,66 +178,7 @@ let svg = d3.select(map.getPanes().overlayPane)
                 
                 <section>
                     <h3>D3 + Leaflet integration</h3>
-                    <p>Great ObservableHQ on how to use <a href="https://observablehq.com/@sfu-iat355/intro-to-leaflet-d3-interactivity" target="_blank">D3 with Leaflet</a>.</p>
-                </section>
-
-                <section>
-                    <h3>D3 - use Leaflet Projection</h3>
-                    <p class="smallfont">Leaflet uses its own geo projection, and we're going to make D3 sync with that.</p>
-                    <p class="smallfont">Recall that D3 projection is simply taking a lat/lon coordinate and turning it into a SVG x, y point.</p>
-                    <pre><code>
-  // Use Leaflets projection API for drawing svg path (creates a stream of projected points)
-  const projectPoint = function(x, y) {
-    const point = map.latLngToLayerPoint(new L.LatLng(y, x))
-    this.stream.point(point.x, point.y)
-  }
-  
-  
-  // Use d3's custom geo transform method to implement the above
-  const projection = d3.geoTransform({point: projectPoint})
-  // creates geopath from projected points (SVG)
-  const pathCreator = d3.geoPath().projection(projection)                    
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h3>D3 - use Leaflet Projection</h3>
-                    <p class="smallfont">Notice that panning and zooming does not properly translate / scale the SVG.</p>
-                    <p class="smallfont">Add in onZoom hook.</p>
-                    <pre><code>
-svg.append("g")
-    .attr("id", "districts");
-    
-let areaPaths = d3.select("g#districts")
-    .selectAll("path")
-    .data(data[0].features)
-    .enter()
-    .append("path")
-    .attr("d", geopath)
-    .attr("fill", "black");
-    
-  // Function to place svg based on zoom
-  const onZoom = () => areaPaths.attr('d', geopath)
-  // initialize positioning
-  onZoom();
-  // reset whenever map is moved
-  map.on('zoomend', onZoom);
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h3>Leaflet - mouse interaction</h3>
-                    <p>Leaflet turns off mouse events for all overlay SVG panes by default.</p>
-                    <p>Add the "leaflet-interactive" class to every SVG tag (the appended paths in the case of districts) that you want to make interactive.</p>
-                </section>
-
-                <section>
-                    <h3>2.5D maps using Mapbox</h3>
-                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox</a> isn't a true 3D solution, say unlike <a href="https://cesium.com/" target="_blank">Cesium</a>.</p>
-                    <p>Comparison <a href="https://blog.logrocket.com/cesium-vs-mapbox-which-mapping-service-is-best/" target="_blank">here</a>.</p>
-                    <p>Please go get your own <a href="https://www.mapbox.com/" target="_blank">mapbox</a> API key - it's free for low amount of usage.</p>
-                    <p>We're going to run this <a href="https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/" target="_blank">example</a> from mapbox.</p>
-                    <p>All 2.5D mapbox code will be run using your own API key!</p>
+                    <p>ObservableHQ on how to use <a href="https://observablehq.com/@sfu-iat355/intro-to-leaflet-d3-interactivity" target="_blank">D3 with Leaflet</a>.</p>
                 </section>
 
                 <section>
